@@ -2,45 +2,44 @@ import { createRouter, createWebHistory } from 'vue-router'
 import RegisterViewVue from '@/views/RegisterView.vue'
 import SignInViewVue from '@/views/SignInView.vue'
 import HomeView from '@/views/HomeView.vue'
+import * as localStorage from '../session'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
-      path: '/dashboard',
-      name: 'dashboard',
+      path: '/home',
+      name: 'home',
       component: HomeView,
       meta: {
         requiresAuth: true
       }
     },
     {
-      path: '/register',
-      name: 'register',
+      path: '/registration',
+      name: 'registration',
       component: RegisterViewVue
     },
     {
-      path: '/auth',
-      name: 'auth',
+      path: '/login',
+      name: 'login',
       component: SignInViewVue
     }
   ]
 })
 
-// router.beforeEach((to, _, next) => {
-//   if (to.meta.requiresAuth) {
-//     const token = localStorage.getItem('token')
-//     if (token) {
-//       // User is authenticated, proceed to the route
-//       next()
-//     } else {
-//       // User is not authenticated, redirect to login
-//       next('/login')
-//     }
-//   } else {
-//     // Non-protected route, allow access
-//     next()
-//   }
-// })
+router.beforeEach((to, _, next) => {
+  if (to.meta.requiresAuth) {
+    const token = localStorage.get('auth_token')
+
+    if (token) {
+      next()
+    } else {
+      next('/login')
+    }
+  } else {
+    next()
+  }
+})
 
 export default router

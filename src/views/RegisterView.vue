@@ -6,7 +6,7 @@
       :placeholderUsername="'Enter your username'"
       :placeholderPassword="'Enter your password'"
       :buttonText="'Sign Up'"
-      @submit="handleLogin"
+      @submit="registration"
     />
   </div>
 </template>
@@ -26,7 +26,7 @@ export default {
     }
   },
   methods: {
-    async handleLogin(username: string, password: string) {
+    async registration(username: string, password: string) {
       if (username && password) {
         try {
           this.isLoading = true
@@ -46,7 +46,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-/* Add your parent component styles here */
-</style>

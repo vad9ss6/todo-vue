@@ -1,13 +1,19 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
+import { inject } from 'vue'
+
+const { isLoggedIn, logout }: any = inject('session')
 </script>
 
 <template>
   <header>
     <div class="wrapper">
-      <nav>
-        <RouterLink to="/register">SignUp</RouterLink>
-        <RouterLink to="/auth">SignIn</RouterLink>
+      <nav v-if="isLoggedIn">
+        <button @click="logout">Logout</button>
+      </nav>
+      <nav v-else>
+        <RouterLink to="/registration">SignUp</RouterLink>
+        <RouterLink to="/login">SignIn</RouterLink>
       </nav>
     </div>
   </header>

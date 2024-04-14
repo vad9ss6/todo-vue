@@ -1,1 +1,2 @@
-export * from './PersistentStorage'
+export * from './persistentStorage'
+export * from './useSession'

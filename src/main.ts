@@ -1,11 +1,14 @@
-import './assets/main.css'
-
 import { createApp } from 'vue'
-import App from './App.vue'
 import router from './router'
 
-const app = createApp(App).provide('main', { user: 'guest', isLoggedIn: false })
+import App from './App.vue'
+import { useSession } from './session'
+
+import './assets/main.css'
+
+const session = useSession(router)
+
+const app = createApp(App).provide('session', { ...session })
 
 app.use(router)
-
 app.mount('#app')

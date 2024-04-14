@@ -12,41 +12,50 @@
 </template>
 
 <script lang="ts">
+import { inject, defineComponent, ref, type Ref } from 'vue'
+import { useRouter } from 'vue-router'
+
 import UserForm from '@/components/UserForm.vue'
 import ApiService from '@/services'
 
-export default {
+export default defineComponent({
   components: {
     UserForm
   },
-  data() {
-    return {
-      isLoading: false,
-      error: null
-    }
-  },
-  methods: {
-    async handleLogin(username: string, password: string) {
+  setup() {
+    const router = useRouter()
+
+    const isLoading: Ref<boolean> = ref(false)
+    const error: Ref<string | null> = ref(null)
+
+    const handleLogin = async (username: string, password: string) => {
       if (username && password) {
         try {
-          this.isLoading = true
-          await ApiService.auth({
+          isLoading.value = true
+          const { data } = await ApiService.auth({
             user_name: username,
             password: password
           })
-          this.isLoading = false
+          if ('login' in session) {
+            session.login(data.access_token)
+          }
+          router.push('/home')
         } catch (error: any) {
           console.error('Error:', error)
-          this.error = error.message || 'An error occurred'
+          error.value = error.message || 'An error occurred'
         } finally {
-          this.isLoading = false
+          isLoading.value = false
         }
       }
     }
-  }
-}
-</script>
 
-<style scoped>
-/* Add your parent component styles here */
-</style>
+    const session: any = inject('session')
+
+    return {
+      isLoading,
+      error,
+      handleLogin
+    }
+  }
+})
+</script>
