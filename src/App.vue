@@ -7,18 +7,24 @@ const { isLoggedIn, logout }: any = inject('session')
 
 <template>
   <header>
-    <div class="wrapper">
-      <nav v-if="isLoggedIn">
-        <button @click="logout">Logout</button>
+    <div v-if="isLoggedIn">
+      <nav>
+        <button class="btn-logout" @click="logout">Logout</button>
       </nav>
-      <nav v-else>
+      <div>
+        <RouterView />
+      </div>
+    </div>
+    <div v-else>
+      <nav>
         <RouterLink to="/registration">SignUp</RouterLink>
         <RouterLink to="/login">SignIn</RouterLink>
       </nav>
+      <div class="unauthorized">
+        <RouterView />
+      </div>
     </div>
   </header>
-
-  <RouterView />
 </template>
 
 <style scoped>
@@ -30,5 +36,11 @@ nav a {
 
 nav a:first-of-type {
   border: 0;
+}
+.unauthorized {
+  height: calc(100vh - 150px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 </style>

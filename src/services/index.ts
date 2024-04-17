@@ -1,9 +1,9 @@
 import client from './axios'
 
 class ApiService {
-  // getAll() {
-  //   return client.get('/tutorials');
-  // }
+  getAllTodo() {
+    return client.get('/todo/all');
+  }
 
   // get(id) {
   //   return client.get(`/tutorials/${id}`);

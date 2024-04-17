@@ -10,9 +10,24 @@
 a,
 .green {
   text-decoration: none;
-  color: var(--color-text);
   transition: 0.4s;
   padding: 3px;
+}
+
+.btn-logout {
+  font-size: small;
+  font-weight: 700;
+  background: hsla(160, 100%, 37%, 0.6);
+  border: 2px solid hsla(160, 100%, 37%, 0.7);
+  border-radius: 5px;
+  color: #fff;
+  transition: 0.4s;
+  padding: 7px 12px;
+  cursor: pointer;
+}
+
+.btn-logout:hover {
+  background-color: hsla(160, 100%, 37%, 0.2);
 }
 
 nav a.router-link-exact-active:hover {
@@ -26,16 +41,5 @@ nav a.router-link-exact-active {
 @media (hover: hover) {
   a:hover {
     background-color: hsla(160, 100%, 37%, 0.2);
-  }
-}
-
-@media (min-width: 1024px) {
-  body {
-    display: flex;
-    place-items: center;
-  }
-
-  #app {
-    padding: 0 2rem;
   }
 }
