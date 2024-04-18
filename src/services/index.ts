@@ -1,36 +1,29 @@
 import client from './axios'
 
 class ApiService {
-  getAllTodo() {
-    return client.get('/todo/all');
-  }
-
-  // get(id) {
-  //   return client.get(`/tutorials/${id}`);
-  // }
-
-  createUser(data: { user_name: string; password: string }) {
-    return client.post('/users', data)
-  }
   auth(data: { user_name: string; password: string }) {
     return client.post('/auth/login', data)
   }
 
-  // update(id, data) {
-  //   return client.put(`/tutorials/${id}`, data);
-  // }
+  createUser(data: { user_name: string; password: string }) {
+    return client.post('/users', data)
+  }
 
-  // delete(id) {
-  //   return client.delete(`/tutorials/${id}`);
-  // }
+  getAllTodo() {
+    return client.get('/todo/all')
+  }
 
-  // deleteAll() {
-  //   return client.delete(`/tutorials`);
-  // }
+  postTask(data) {
+    return client.post(`/todo`, data)
+  }
 
-  // findByTitle(title) {
-  //   return client.get(`/tutorials?title=${title}`);
-  // }
+  deleteTask(id) {
+    return client.delete(`/todo/${id}`)
+  }
+
+  updateStatus({ id, status }) {
+    return client.patch(`/todo/${id}`, { status })
+  }
 }
 
 export default new ApiService()

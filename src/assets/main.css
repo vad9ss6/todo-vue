@@ -9,6 +9,7 @@
 
 a,
 .green {
+  color: #fff;
   text-decoration: none;
   transition: 0.4s;
   padding: 3px;
@@ -28,6 +29,14 @@ a,
 
 .btn-logout:hover {
   background-color: hsla(160, 100%, 37%, 0.2);
+}
+
+.input {
+  border: 1px solid;
+  border-radius: 5px;
+  background-color: #fff;
+  padding: 10px 20px;
+  margin-bottom: 15px;
 }
 
 nav a.router-link-exact-active:hover {

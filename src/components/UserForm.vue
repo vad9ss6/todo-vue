@@ -56,13 +56,6 @@ export default {
   flex-direction: column;
   width: 400px;
 }
-.input {
-  border: 1px solid;
-  border-radius: 5px;
-  background-color: #fff;
-  padding: 10px 20px;
-  margin-bottom: 15px;
-}
 
 .btn {
   padding: 10px 20px;
