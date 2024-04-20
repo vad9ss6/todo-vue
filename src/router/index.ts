@@ -4,8 +4,16 @@ import SignInViewVue from '@/views/SignInView.vue'
 import HomeView from '@/views/HomeView.vue'
 import * as localStorage from '../session'
 
+interface ImportMeta {
+  readonly env: {
+    BASE_URL: string
+  }
+}
+
+const { env } = import.meta as unknown as ImportMeta
+
 const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
+  history: createWebHistory(env.BASE_URL),
   routes: [
     {
       path: '/home',

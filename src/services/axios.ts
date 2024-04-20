@@ -3,7 +3,7 @@ import * as storage from '../session'
 // import { CONFIG } from '../../config';
 
 const client = axios.create({
-  baseURL: 'http://localhost:3000/',
+  baseURL: 'http://64.226.91.13:3000/',
   headers: {
     'Content-Type': 'application/json'
   }

@@ -1,3 +1,4 @@
+import type { Todo } from '@/types';
 import client from './axios'
 
 class ApiService {
@@ -13,15 +14,15 @@ class ApiService {
     return client.get('/todo/all')
   }
 
-  postTask(data) {
+  postTask(data: Todo) {
     return client.post(`/todo`, data)
   }
 
-  deleteTask(id) {
+  deleteTask(id: string) {
     return client.delete(`/todo/${id}`)
   }
 
-  updateStatus({ id, status }) {
+  updateStatus({ id, status }: { id: string; status: string }) {
     return client.patch(`/todo/${id}`, { status })
   }
 }
