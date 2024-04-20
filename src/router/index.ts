@@ -13,7 +13,7 @@ interface ImportMeta {
 const { env } = import.meta as unknown as ImportMeta
 
 const router = createRouter({
-  history: createWebHistory(env.BASE_URL),
+  history: createWebHistory('/todo-vue/'),
   routes: [
     {
       path: '/home',
