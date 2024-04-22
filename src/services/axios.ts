@@ -5,7 +5,8 @@ import * as storage from '../session'
 const client = axios.create({
   baseURL: 'https://0a00-64-226-91-13.ngrok-free.app',
   headers: {
-    'Content-Type': 'application/json'
+    'Content-Type': 'application/json',
+    'Ngrok-Skip-Browser-Warning': '1111'
   }
 })
 
