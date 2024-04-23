@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHashHistory } from 'vue-router'
 import RegisterViewVue from '@/views/RegisterView.vue'
 import SignInViewVue from '@/views/SignInView.vue'
 import HomeView from '@/views/HomeView.vue'
@@ -13,7 +13,7 @@ interface ImportMeta {
 const { env } = import.meta as unknown as ImportMeta
 
 const router = createRouter({
-  history: createWebHistory('/todo-vue/'),
+  history: createWebHashHistory('/todo-vue/'),
   routes: [
     {
       path: '/home',
