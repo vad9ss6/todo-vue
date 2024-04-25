@@ -2,8 +2,10 @@ import axios from 'axios'
 import * as storage from '../session'
 // import { CONFIG } from '../../config';
 
+const path = process.env.PUBLIC_URL
+
 const client = axios.create({
-  baseURL: 'https://93a1-64-226-91-13.ngrok-free.app',
+  baseURL: path,
   headers: {
     'Content-Type': 'application/json',
     'Ngrok-Skip-Browser-Warning': '1111'
