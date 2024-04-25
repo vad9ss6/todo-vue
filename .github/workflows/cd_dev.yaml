@@ -19,4 +19,8 @@ jobs:
       - name: Build Application
         run: npm run build
       - name: Deploy
-        run: npm run deploy
+        env:
+          GH_TOKEN: ${{ secrets.SSH_KEY }}
+        run: |
+          npm install -g gh-pages
+          npm run deploy
