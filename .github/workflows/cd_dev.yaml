@@ -17,6 +17,6 @@ jobs:
       - name: Install dependencies
         run: npm install --immutable --immutable-cache --check-cache
       - name: Build Application
-        run: npm build
+        run: npm run build
       - name: Deploy
-        run: npm deploy
+        run: npm run deploy
