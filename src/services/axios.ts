@@ -1,10 +1,8 @@
 import axios from 'axios'
 import * as storage from '../session'
 
-const baseURL = process.env.PUBLIC_URL
-
 const client = axios.create({
-  baseURL,
+  baseURL: import.meta.env.VITE_PUBLIC_URL,
   headers: {
     'Content-Type': 'application/json',
     'Ngrok-Skip-Browser-Warning': '1111'
